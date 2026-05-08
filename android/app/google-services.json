@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "466794306035",
+    "project_id": "apex-app-7d0a4",
+    "storage_bucket": "apex-app-7d0a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466794306035:android:3c82bd95e9efacb014da86",
+        "android_client_info": {
+          "package_name": "com.apex.apexapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqmgVSZD1M4VVfbsRZTYHcESjii9Vx4OM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466794306035:android:bfc19e99b7c2040c14da86",
+        "android_client_info": {
+          "package_name": "com.example.apex_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqmgVSZD1M4VVfbsRZTYHcESjii9Vx4OM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
