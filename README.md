@@ -113,8 +113,4 @@ flutter run
 - Supabase Project URL & Anon Key
 - Firebase `google-services.json` / `GoogleService-Info.plist`
 
-### Setup Environment Variables
-
-Create a `.env` file in the project root directory and add the required environment variables using the structure provided in `env.example`.
-
 ### Developed and Maintained by APEX Team 🛠️
