@@ -56,9 +56,75 @@ To maintain code quality and ensure a scalable collaborative development process
 
 ```text
 lib/
-├── core/          # Dependency Injection, Themes, Errors, and Constants
-├── features/      # Feature-based modules (Auth, Materials, Courses, etc.)
-└── main.dart      # Application entry point
+│
+├── core/                             # Shared app-wide utilities and infrastructure
+│   │
+│   ├── constants/                   # Global constant values used across the app
+│   │   ├── app_colors.dart          # Application color palette
+│   │   ├── app_strings.dart         # Static text and labels
+│   │   └── app_sizes.dart           # Dimensions, paddings, radii, spacing
+│   │
+│   ├── database/                    # Local database configuration and helpers
+│   │   ├── sqlite_service.dart      # SQLite initialization and database access
+│   │   └── database_tables.dart     # Database table names and schemas
+│   │
+│   ├── network/                     # Remote API and internet-related configuration
+│   │   ├── supabase_client.dart     # Supabase client initialization
+│   │   ├── network_info.dart        # Internet connection checker
+│   │   └── api_endpoints.dart       # API routes and endpoints
+│   │
+│   ├── services/                    # Shared services used globally
+│   │   ├── auth_service.dart        # Authentication helper methods
+│   │   ├── storage_service.dart     # File upload/download handling
+│   │   └── notification_service.dart # Push notification management
+│   │
+│   ├── utils/                       # Helper functions and utility classes
+│   │   ├── validators.dart          # Form validation helpers
+│   │   ├── formatters.dart          # Text/date/number formatters
+│   │   └── extensions.dart          # Dart extension methods
+│   │
+│   └── widgets/                     # Reusable shared UI components
+│       ├── custom_button.dart       # Shared custom button widget
+│       ├── custom_textfield.dart    # Shared text input widget
+│       └── loading_indicator.dart   # Shared loading spinner widget
+│
+├── features/                        # Application features/modules
+│   │
+│   ├── auth/                        # Authentication feature
+│   │   │
+│   │   ├── cubit/                   # State management for authentication
+│   │   │   ├── auth_cubit.dart      # Authentication business logic
+│   │   │   └── auth_state.dart      # Authentication states
+│   │   │
+│   │   ├── data/                    # Data sources and API/database operations
+│   │   │   ├── auth_remote_data_source.dart # Firebase/Supabase auth requests
+│   │   │   └── auth_local_data_source.dart  # Local auth caching
+│   │   │
+│   │   ├── models/                  # Authentication-related data models
+│   │   │   └── user_model.dart      # User data model
+│   │   │
+│   │   ├── repositories/            # Repository layer connecting cubit and data
+│   │   │   └── auth_repository.dart # Authentication repository implementation
+│   │   │
+│   │   ├── pages/                   # Authentication screens/pages
+│   │   │   ├── login_page.dart      # Login screen
+│   │   │   └── register_page.dart   # Registration screen
+│   │   │
+│   │   └── widgets/                 # Auth-specific reusable widgets
+│   │       ├── auth_textfield.dart  # Authentication text field widget
+│   │       └── social_login_button.dart # Google/Facebook login button
+│   │
+│   ├── home/                        # Home/dashboard feature
+│   │
+│   ├── materials/                   # Academic materials feature
+│   │
+│   ├── courses/                     # Courses management feature
+│   │
+│   └── profile/                     # User profile feature
+│
+├── firebase_options.dart            # Generated Firebase configuration file
+│
+└── main.dart                        # Application entry point
 ```
 
 ### Workflow Overview
