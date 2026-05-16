@@ -1,23 +1,30 @@
 # ApexApp | University Resource Management System
 
-A scalable Flutter application built with **Layered Clean Architecture**. The system provides a scalable infrastructure for academic content delivery, integrating **Firebase Auth**, **Supabase PostgreSQL**, and **SQLite** for offline-first capabilities.
+A scalable Flutter application built with a modular **Feature-First Architecture**. The system provides a robust infrastructure for academic content delivery and e-learning, integrating **Firebase Auth**, **Supabase PostgreSQL**, and **SQLite** for offline-first local caching capabilities.
 
 ---
 
-## 🏗 System Architecture
+## 🏗️ System Architecture
 
-The project implements a **Simplified Clean Architecture** to ensure separation of concerns, testability, and maintainability.
+The project implements a **Modular Feature-First Architecture** combined with a centralized **Core Layer**. This design ensures a strict separation of concerns, high maintainability, and a smooth workflow for team collaboration, keeping the business logic completely isolated from the UI presentation layer.
 
-### Layers:
+### Architectural Structure:
 
-1. **Domain Layer**: Contains functional `Entities` and `Repository Interfaces`. This layer is independent of any external libraries.
-2. **Data Layer**: Responsible for data retrieval and persistence.
-   - `Models`: JSON serialization and Data Transfer Objects (DTOs).
-   - `Data Sources`: Implementation of **Supabase** (Remote) and **SQLite** (Local).
-   - `Repositories`: Implementation of domain interfaces with logic to handle data caching (Local vs Remote).
-3. **Presentation Layer**:
-   - Managed via **State Management** (Bloc/Cubit).
-   - Atomic Design pattern for UI components.
+1. **Core Layer (`lib/core/`)**: The backbone of the application containing centralized, shared configurations and infrastructure:
+   - `constants`: Global application configurations, styles, themes, and asset paths.
+   - `database`: Local caching configuration and database management implemented via **SQLite**.
+   - `network`: Remote data operations, API clients, and **Supabase** / **Firebase** authentication services.
+   - `services`: App-wide utilities, dependency injection containers, and global services.
+   - `widgets`: Reusable, atomic UI components engineered to enforce the **DRY (Don't Repeat Yourself)** principle across all features.
+
+2. **Features Layer (`lib/features/`)**: A modular layer where each directory represents an independent functional module of the platform (e.g., `auth`, `courses`, `home`, `materials`, `profile`). Each feature encapsulates its own responsibilities:
+   - **Data Handling**: Manages Data Transfer Objects (DTOs), JSON serialization (Models), and local/remote data sources.
+   - **Business Logic**: Processes functional operations and coordinates communication between data repositories and the UI.
+   - **UI Representation**: Standard Flutter widgets dedicated exclusively to presenting states visually to the user.
+
+3. **State Management Layer**:
+   - Explicitly managed via **Cubit (via the `flutter_bloc` ecosystem)**.
+   - Implements a unidirectional data flow where business logic resides strictly inside Cubits, rendering UI widgets entirely stateless and presentation-driven.
 
 ## 🛠 Tech Stack & Dependencies
 
