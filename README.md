@@ -32,15 +32,17 @@ The project implements a **Simplified Clean Architecture** to ensure separation 
 
 ## 📊 Database Schema Design (Supabase)
 
-The relational schema is optimized for high-speed querying of hierarchical academic data:
-
-- `users`: Core profile metadata (Linked to Firebase UID).
-- `news`: Campus announcements, news feeds, and updates.
-- `levels`: Academic tiers (e.g., Year 1, Year 2, etc.).
-- `terms`: Semesters nested under levels (1:N relationship).
-- `materials`: Content metadata (PDFs, Images) linked to specific terms.
-- `courses`: Learning modules including instructor details and thumbnails.
-- `course_enrollments`: Junction table for tracking student subscriptions and progress.
+- `roles`: Defines user privileges (e.g., Student, Admin, Instructor).
+- `users`: Core profile metadata including academic associations (Major, Level) and wallet balance (Linked to Firebase UID).
+- `majors`: Academic specializations (e.g., IT, Computer Science, Cyber Security).
+- `academic_levels`: Academic tiers (e.g., Level 1, Level 2, etc.).
+- `terms`: Semesters nested under academic levels (1:N relationship).
+- `tracks`: Specialized learning paths nested under specific majors and levels.
+- `materials` & `material_files`: Academic subjects and their associated downloadable content, linked to specific terms, majors, and tracks.
+- `courses` & `course_lessons`: Video-based learning modules including instructor details, pricing, and ordered lessons.
+- `enrollments` & `lesson_progress`: Tables for tracking student course subscriptions, lesson completion status, and overall progress.
+- `wallet_transactions`: Logs of all financial operations (e.g., deposits, course purchases, refunds).
+- `news`: Platform announcements, news feeds, and updates.
 
 ## 🌿 Git Workflow
 
@@ -148,15 +150,6 @@ SUPABASE_URL=your_project_url
 SUPABASE_ANON_KEY=your_anon_key
 ```
 
-#### Firebase Configuration
-
-Firebase configuration files are excluded from version control for security reasons.
-
-| Platform | File Location                                         |
-| :------- | :---------------------------------------------------- |
-| Android  | Place `google-services.json` inside `android/app/`    |
-| iOS      | Place `GoogleService-Info.plist` inside `ios/Runner/` |
-
 #### Install Dependencies
 
 Fetch all required packages defined in `pubspec.yaml`:
@@ -175,7 +168,7 @@ flutter run
 
 ### Prerequisites
 
-- Flutter SDK `^3.x.x`
+- Flutter SDK `^3.35.3`
 - Supabase Project URL & Anon Key
 - Firebase `google-services.json` / `GoogleService-Info.plist`
 
